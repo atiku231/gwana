@@ -49,6 +49,10 @@ import AppDrawer from './components/AppDrawer';
 import Taskbar from './components/Taskbar';
 import MobileFooter from './components/MobileFooter';
 import { Logo } from './components/Logo';
+// Import System Architecture
+import { ServiceContainer } from './system/ServiceContainer';
+import { AppRegistryProvider } from './system/AppRegistry';
+import { ALL_APP_MANIFESTS } from './apps/registry';
 
 
 declare const pdfjsLib: any;
@@ -1292,43 +1296,59 @@ export default function App() {
 
     return (
         <ErrorBoundary>
-            <LiveAPIProvider 
-                currentUser={currentUser}
-                subscriptionIsActive={isSubscribed}
-                updateFreeUsage={(seconds) => updateCurrentUser({ ...currentUser, subscription: { ...currentUser.subscription, freeMinutesUsedToday: (currentUser.subscription.freeMinutesUsedToday || 0) + seconds } })}
-                persona={'Agent Zero'}
-                setPersona={() => {}}
-                settings={DEFAULT_SETTINGS}
-                aiMode={'default'}
-                view={'chat'}
-                setToastMessage={() => {}}
-                setCallHistory={() => {}}
-                onModeChangeByAI={() => {}}
+            <ServiceContainer
+                getMessages={() => []}
+                getSettings={() => DEFAULT_SETTINGS}
+                getAiMode={() => 'default'}
+                getPersona={() => 'Agent Zero'}
+                getCallState={() => 'idle'}
+                getCurrentUser={() => currentUser}
                 setAiMode={() => {}}
-                switchToChatView={() => {}}
-                addMessageToChat={() => {}}
-                appendMessageText={() => {}}
-                updateMessageText={() => {}}
-                setView={() => {}}
+                setPersona={() => {}}
                 updateSettings={() => {}}
-                clearChat={() => {}}
-                exportChat={() => {}}
-                speakerNames={{}}
-                setSpeakerNames={() => {}}
-                setShowMeetingModal={() => {}}
-                language={'English'}
-                sessionNewsHistory={[]}
-                isMultiAgentMode={false}
-                setWhiteboardElements={() => {}}
+                setToastMessage={() => {}}
+                onIntentNavigation={() => {}}
             >
-                <KwararruApp 
-                    initialState={initialState} 
-                    currentUser={currentUser}
-                    isSubscribed={isSubscribed}
-                    logout={logout}
-                    updateCurrentUser={updateCurrentUser}
-                />
-            </LiveAPIProvider>
+                <AppRegistryProvider apps={ALL_APP_MANIFESTS}>
+                    <LiveAPIProvider 
+                        currentUser={currentUser}
+                        subscriptionIsActive={isSubscribed}
+                        updateFreeUsage={(seconds) => updateCurrentUser({ ...currentUser, subscription: { ...currentUser.subscription, freeMinutesUsedToday: (currentUser.subscription.freeMinutesUsedToday || 0) + seconds } })}
+                        persona={'Agent Zero'}
+                        setPersona={() => {}}
+                        settings={DEFAULT_SETTINGS}
+                        aiMode={'default'}
+                        view={'chat'}
+                        setToastMessage={() => {}}
+                        setCallHistory={() => {}}
+                        onModeChangeByAI={() => {}}
+                        setAiMode={() => {}}
+                        switchToChatView={() => {}}
+                        addMessageToChat={() => {}}
+                        appendMessageText={() => {}}
+                        updateMessageText={() => {}}
+                        setView={() => {}}
+                        updateSettings={() => {}}
+                        clearChat={() => {}}
+                        exportChat={() => {}}
+                        speakerNames={{}}
+                        setSpeakerNames={() => {}}
+                        setShowMeetingModal={() => {}}
+                        language={'English'}
+                        sessionNewsHistory={[]}
+                        isMultiAgentMode={false}
+                        setWhiteboardElements={() => {}}
+                    >
+                        <KwararruApp 
+                            initialState={initialState} 
+                            currentUser={currentUser}
+                            isSubscribed={isSubscribed}
+                            logout={logout}
+                            updateCurrentUser={updateCurrentUser}
+                        />
+                    </LiveAPIProvider>
+                </AppRegistryProvider>
+            </ServiceContainer>
         </ErrorBoundary>
     );
 }

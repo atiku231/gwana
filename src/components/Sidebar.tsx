@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Settings, Code, MessageSquare, BookOpen, Car, Calendar, Globe } from 'lucide-react';
 import type { AiMode, View, Persona, CallState } from '@/src/lib/types';
-import { AI_MODES } from '@/src/lib/constants';
+import { ALL_APP_MANIFESTS } from '@/src/apps/registry';
 import { Logo } from './Logo';
 
 interface SidebarProps {
@@ -63,18 +63,18 @@ const Sidebar: React.FC<SidebarProps> = ({ activeMode, setAiMode, activeView, se
             <Logo persona={persona} />
         </div>
         
-        {AI_MODES.map(modeInfo => {
-          const Icon = modeInfo.iconComponent;
+        {ALL_APP_MANIFESTS.map(appManifest => {
+          const Icon = appManifest.iconComponent;
           return (
             <NavButton
-              key={modeInfo.mode}
-              label={modeInfo.name}
+              key={appManifest.id}
+              label={appManifest.name}
               icon={<Icon size={24} />}
-              mode={modeInfo.mode}
-              isActive={activeView === 'chat' && activeMode === modeInfo.mode}
+              mode={appManifest.mode}
+              isActive={activeView === 'chat' && activeMode === appManifest.mode}
               onClick={() => {
                   setView('chat');
-                  setAiMode(modeInfo.mode);
+                  setAiMode(appManifest.mode);
               }}
               disabled={isCallActive}
             />
