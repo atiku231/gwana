@@ -5,7 +5,7 @@ import type { AppManifest } from '@/src/system/types';
 export const aiWriterAppManifest: AppManifest = {
   id: 'ai-writer',
   name: 'AI Writer',
-  mode: 'aiWriter',
+  mode: 'writer',
   icon: '✍️',
   iconComponent: PenTool,
   permissions: ['AI_ACCESS', 'STORAGE'],

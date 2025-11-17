@@ -29,7 +29,28 @@
   }
 }
 </script>
+<style>
+  /* Hide scrollbars globally but keep scroll functionality */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 
+  *::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+</style>
 </head>
 <body class="antialiased">
     <div id="root" class="h-screen w-screen"></div>

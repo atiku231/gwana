@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Mic } from 'lucide-react';
+import { AudioLines } from 'lucide-react';
 import type { AppManifest } from '@/src/system/types';
 
 export const voiceJournalAppManifest: AppManifest = {
@@ -7,7 +7,7 @@ export const voiceJournalAppManifest: AppManifest = {
   name: 'Voice Journal',
   mode: 'voiceJournal',
   icon: '🎙️',
-  iconComponent: Mic,
+  iconComponent: AudioLines,
   permissions: ['AI_ACCESS', 'MICROPHONE', 'STORAGE'],
   intentFilters: [
     { action: 'CREATE', dataType: 'journal/*' },
