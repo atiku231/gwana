@@ -650,10 +650,90 @@
   .capsule-sender {
     top: 0.5rem;
   }
-  .capsule-content img {
-    max-width: 250px;
-  }
-  .dashboard-container {
-    padding-bottom: 70px; /* Space for footer */
-  }
+.capsule-content img {
+  max-width: 250px;
 }
+.dashboard-container {
+  padding-bottom: 70px; /* Space for footer */
+}
+}
+
+/* Desktop and Dashboard Layout Fixes */
+.desktop-main-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.dashboard-panels-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dashboard-panel {
+  background: rgba(13, 17, 23, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  min-width: 260px;
+}
+
+.dashboard-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan);
+}
+
+.dashboard-clock-widget {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.dashboard-clock-widget .time {
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 300;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(0,255,255,0.2);
+}
+
+.dashboard-clock-widget .date {
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* App Drawer Shortcuts */
+.desktop-shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.25rem;
+  color: var(--text-primary);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.desktop-shortcut:hover {
+  transform: translateY(-2px) scale(1.03);
+  color: var(--accent-cyan);
+}
+
+.desktop-shortcut span {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
