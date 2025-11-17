@@ -1,20 +1,24 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Webzero Too - AI Operating System
 
-# Run and deploy your AI Studio app
+A modular AI-powered operating system built with React and powered by Google Gemini AI.
 
-This contains everything you need to run your app locally.
+## Architecture
 
-View your app in AI Studio: https://ai.studio/apps/drive/1FNs_sh8uafsvNk-sbFgMo_ERoSx-OO5L
+Webzero Too uses a modern app-based architecture where each application is independent and communicates through an intent system, similar to Android.
 
 ## Run Locally
 
 **Prerequisites:**  Node.js
-
 
 1. Install dependencies:
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+   
+## Features
+
+- **Independent Apps**: Chat, Study, News, Quiz, Debate, Translator, AI Writer, Code Helper, Voice Journal
+- **System Services**: AI, Storage, Calendar, Media, Notifications
+- **Intent System**: Apps communicate via intents, not direct imports
+- **Dependency Injection**: All services injected through SystemServices

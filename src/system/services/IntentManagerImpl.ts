@@ -1,12 +1,18 @@
 import type { IntentManager } from '../types/system.types';
 import type { Intent } from '../types/intent.types';
 import type { AppManifest } from '../types/app.types';
+import { ALL_APP_MANIFESTS } from '@/src/apps/registry';
 
 export class IntentManagerImpl implements IntentManager {
   private handlers: Map<string, (intent: Intent) => void> = new Map();
   private appRegistry: Map<string, AppManifest> = new Map();
   
-  constructor(private onModeChange: (appId: string, intent?: Intent) => void) {}
+  constructor(private onModeChange: (appId: string, intent?: Intent) => void) {
+    // Auto-register all apps from registry
+    ALL_APP_MANIFESTS.forEach(app => {
+      this.appRegistry.set(app.id, app);
+    });
+  }
 
   setAppRegistry(apps: AppManifest[]) {
     apps.forEach(app => {

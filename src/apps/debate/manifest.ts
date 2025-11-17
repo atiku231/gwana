@@ -13,5 +13,5 @@ export const debateAppManifest: AppManifest = {
     { action: 'DEBATE', dataType: 'topic/*' },
     { action: 'CREATE', dataType: 'debate/*' },
   ],
-  entryPoint: lazy(() => import('./App')),
+  entryPoint: lazy(() => import('./DebateApp')),
 };

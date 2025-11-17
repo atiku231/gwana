@@ -13,5 +13,5 @@ export const chatAppManifest: AppManifest = {
     { action: 'VIEW', dataType: 'text/*' },
     { action: 'SHARE', dataType: '*/*' },
   ],
-  entryPoint: lazy(() => import('./App')),
+  entryPoint: lazy(() => import('./ChatApp')),
 };

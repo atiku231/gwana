@@ -12,5 +12,5 @@ export const translatorAppManifest: AppManifest = {
   intentFilters: [
     { action: 'TRANSLATE', dataType: 'text/*' },
   ],
-  entryPoint: lazy(() => import('./App')),
+  entryPoint: lazy(() => import('./TranslatorApp')),
 };

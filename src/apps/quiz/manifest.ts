@@ -13,5 +13,5 @@ export const quizAppManifest: AppManifest = {
     { action: 'QUIZ', dataType: 'test/*' },
     { action: 'CREATE', dataType: 'quiz/*' },
   ],
-  entryPoint: lazy(() => import('./App')),
+  entryPoint: lazy(() => import('./QuizApp')),
 };

@@ -13,5 +13,5 @@ export const newsAppManifest: AppManifest = {
     { action: 'NEWS', dataType: 'article/*' },
     { action: 'VIEW', dataType: 'news/*' },
   ],
-  entryPoint: lazy(() => import('./App')),
+  entryPoint: lazy(() => import('./NewsApp')),
 };
